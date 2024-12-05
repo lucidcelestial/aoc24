@@ -47,8 +47,6 @@ function sumMiddleValues(arr: number[][]) {
 function part1(): number {
   return sumMiddleValues(
     updates.filter((update) => {
-      let check = true;
-
       for (let page of update) {
         if (!validate(update, getRulesForPage(page))) {
           failed.push(update);
