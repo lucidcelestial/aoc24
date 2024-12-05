@@ -64,30 +64,13 @@ function shouldBeBefore(a: number, b: number, rules: number[][]): boolean {
 
 function part2(): number {
   return sumMiddleValues(
-    failed.map((update) => {
-      let sorted = [update[0]];
-
-      update.shift();
-
-      update.forEach((pageNum) => {
-        let added = false;
-        let rules = getRulesForPage(pageNum);
-
-        sorted.forEach((sortedPageNum, index) => {
-          if (!added && shouldBeBefore(pageNum, sortedPageNum, rules)) {
-            added = true;
-            sorted.splice(index, 0, pageNum);
-          }
-        });
-
-        if (!added) {
-          sorted.push(pageNum);
-        }
-      });
-      return sorted;
-    }),
+    failed.map((update) =>
+      update.sort((a, b) =>
+        shouldBeBefore(a, b, getRulesForPage(b)) ? -1 : 1,
+      ),
+    ),
   );
 }
 
-console.log(part1());
-console.log(part2());
+console.log("Part 1: " + part1());
+console.log("Part 2: " + part2());
