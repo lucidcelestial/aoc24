@@ -1,6 +1,10 @@
-.DS_STORE
-**/.DS_STORE
-**/input.txt
 *
-!*/
+!/**/
 !*.*
+.DS_Store
+**/.DS_Store
+**/*.txt
+/node_modules
+package.json
+package-lock.json
+**/*.js
